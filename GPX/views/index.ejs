@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+</head>
+
+<body>
+
+  <%- include('partials/header') %>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="hero-title">
+          Únete a la mejor plataforma<br>
+          de <span class="highlight">tradeo</span> del mercado.
+        </h1>
+      </div>
+    </section>
+
+    <!-- Crypto Table Section -->
+    <section class="crypto-table-section">
+      <div class="container">
+        <table class="crypto-table">
+          <thead>
+            <tr>
+              <th>Activos</th>
+              <th>Precio de la moneda</th>
+              <th>Cambio en 24h</th>
+              <th>Operar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (locals.coins && coins.length> 0) { %>
+              <% coins.forEach(function(coin) { %>
+                <tr>
+                  <td>
+                    <div class="coin-info">
+                      <span class="coin-icon" data-color="<%= coin.icon_color || '#333' %>"></span>
+                      <%= coin.name %>
+                    </div>
+                  </td>
+                  <td class="price-cell">
+                    <%= coin.price_eur %> €
+                  </td>
+                  <td class="<%= coin.change_24h >= 0 ? 'text-green' : 'text-red' %>">
+                    <%= coin.change_24h>= 0 ? '+' : '' %><%= coin.change_24h %> %
+                  </td>
+                  <td>
+                    <% if (locals.user) { %>
+                      <a href="/trade/<%= coin.symbol %>" class="btn-trade">Operar</a>
+                      <% } else { %>
+                        <a href="/login" class="btn-trade">Operar</a>
+                        <% } %>
+                  </td>
+                </tr>
+                <% }); %>
+                  <% } %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-title">
+          Obtén un <span class="highlight">control</span> total de tu<br>
+          crédito y comercia con tu moneda<br>
+          preferida.
+        </h2>
+      </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+      <script>
+        // Apply dynamic colors to coin icons
+        document.querySelectorAll('.coin-icon[data-color]').forEach(icon => {
+          icon.style.background = icon.getAttribute('data-color');
+        });
+      </script>
+
+</body>
+
+</html>

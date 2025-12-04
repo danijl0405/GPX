@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/deposit.css' />
+</head>
+
+<body>
+
+    <%- include('partials/header') %>
+
+        <div class="container deposit-container">
+            <h2 style="margin-bottom: 30px;">Depositar EUR</h2>
+
+            <div class="currency-selector">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span
+                        style="background: #0055ff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">€</span>
+                    EUR Euro
+                </div>
+                <span>⌄</span>
+            </div>
+
+            <div class="section-label">Recomendado</div>
+            <div class="payment-methods">
+                <div class="method-card" style="border-color: var(--primary-color);"> <!-- Selected state -->
+                    <div class="method-header">
+                        <div class="method-icon" style="background: #0088cc;"></div>
+                        <div>
+                            <div class="method-title">Transferencia bancaria (SEPA Instant)</div>
+                            <div style="font-size: 12px; color: #888;">Utiliza los datos bancarios para efectuar una
+                                transferencia...</div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">1 EUR de comisión</span>
+                        <span class="tag">Entre 0 y 2 días laborales</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Otros</div>
+            <div class="payment-methods">
+                <div class="method-card">
+                    <div class="method-header">
+                        <div class="method-icon" style="background: #ff5500;"></div>
+                        <div class="method-title">Tarjeta (Visa/MasterCard)</div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">2 % de comisión</span>
+                        <span class="tag">Inmediato</span>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <div class="method-icon" style="background: #4285f4;"></div>
+                        <div class="method-title">Google Pay</div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">2 % de comisión</span>
+                        <span class="tag">Inmediato</span>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <div class="method-icon"
+                            style="background: #fff; color: #000; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                        </div>
+                        <div class="method-title">Apple Pay</div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">2 % de comisión</span>
+                        <span class="tag">Inmediato</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; margin-top: 40px; padding: 15px;">Continuar</button>
+
+        </div>
+
+        <%- include('partials/footer') %>
+
+</body>
+
+</html>

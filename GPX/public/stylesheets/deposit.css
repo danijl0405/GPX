@@ -1,0 +1,126 @@
+/* Deposit specific styles */
+.deposit-container {
+    max-width: 800px;
+    /* Aumentado de 600px */
+    margin: 0 auto;
+    padding: 60px 40px;
+    /* Aumentado de 40px 0 */
+}
+
+.deposit-container h2 {
+    margin-bottom: 40px;
+    /* Para el título principal */
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.currency-selector {
+    background: rgba(255, 255, 255, 0.03);
+    /* Más visible */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Más visible */
+    padding: 20px;
+    /* Aumentado de 15px */
+    border-radius: 12px;
+    /* Aumentado de 8px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    /* Aumentado de 30px */
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.currency-selector:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Aumentado de 15px */
+}
+
+.method-card {
+    background: rgba(255, 255, 255, 0.02);
+    /* Más visible */
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    /* Más visible */
+    padding: 24px;
+    /* Aumentado de 20px */
+    border-radius: 16px;
+    /* Aumentado de 12px */
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.method-card:hover {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.method-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    /* Aumentado de 15px */
+    margin-bottom: 14px;
+    /* Aumentado de 10px */
+}
+
+.method-icon {
+    width: 48px;
+    /* Aumentado de 40px */
+    height: 48px;
+    /* Aumentado de 40px */
+    background: #333;
+    border-radius: 12px;
+    /* Aumentado de 8px */
+    flex-shrink: 0;
+}
+
+.method-title {
+    font-weight: 600;
+    font-size: 16px;
+    /* Añadido */
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* Añadido para mejor responsive */
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.08);
+    /* Más visible */
+    color: #ccc;
+    font-size: 12px;
+    padding: 6px 12px;
+    /* Aumentado de 4px 8px */
+    border-radius: 6px;
+    /* Aumentado de 4px */
+    font-weight: 500;
+    /* Añadido */
+}
+
+.section-label {
+    color: #888;
+    font-size: 14px;
+    font-weight: 600;
+    /* Añadido */
+    text-transform: uppercase;
+    /* Añadido */
+    letter-spacing: 0.5px;
+    /* Añadido */
+    margin-bottom: 16px;
+    /* Aumentado de 10px */
+    margin-top: 32px;
+    /* Aumentado de 20px */
+}

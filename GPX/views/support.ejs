@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/support.css' />
+</head>
+
+<body class="support-page">
+
+    <%- include('partials/header') %>
+
+        <div class="hero-support">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="container" style="position: relative; z-index: 1;">
+                <h1>Centro de ayuda</h1>
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Buscar">
+                </div>
+            </div>
+        </div>
+
+        <div class="container support-content">
+            <h2 class="section-title">Autoservicio</h2>
+
+            <div class="autoservice-grid">
+                <div class="service-card"><span class="service-icon">🔐</span> Restablecer 2FA</div>
+                <div class="service-card"><span class="service-icon">🔑</span> Restablecer contraseña</div>
+                <div class="service-card"><span class="service-icon">✉️</span> Cambiar/Desvincular correo</div>
+                <div class="service-card"><span class="service-icon">📱</span> Cambiar/Desvincular teléfono</div>
+                <div class="service-card"><span class="service-icon">🛡️</span> Cambiar contraseña sesión</div>
+                <div class="service-card"><span class="service-icon">🔒</span> Congelar cuenta</div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Preguntas frecuentes</h2>
+                <a href="#" style="color: #888; font-size: 14px;">Ver más →</a>
+            </div>
+            <p style="margin-bottom: 30px; font-size: 14px; font-weight: 600;">Enviar una solicitud ></p>
+
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h3>Comprar criptomonedas</h3>
+                    <ul class="faq-list">
+                        <li>1. Comience con Fast trader</li>
+                        <li>2. Tarjeta de crédito/débito</li>
+                        <li>3. Revolut Pay</li>
+                    </ul>
+                </div>
+                <div class="faq-card">
+                    <h3>Impuestos</h3>
+                    <ul class="faq-list">
+                        <li>1. España</li>
+                        <li>2. Estados Unidos</li>
+                        <li>3. Suiza</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-banner">
+                <h2>¿Aún tienes problemas?</h2>
+                <p>Brindamos servicio al cliente 24/7 que siempre satisface sus necesidades.</p>
+                <a href="#" class="btn btn-primary" style="background: #000; color: #fff;">Contáctenos →</a>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+
+</body>
+
+</html>

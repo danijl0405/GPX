@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "Usuario Demo",
+        "email": "demo@gpx.com",
+        "password": "password123",
+        "balance": {
+            "btc": 0.0001055,
+            "eur": 3524.26
+        },
+        "assets": [
+            {
+                "symbol": "BTC",
+                "name": "Bitcoin",
+                "amount": 0.0001055
+            },
+            {
+                "symbol": "ETH",
+                "name": "Ethereum",
+                "amount": 1.5
+            }
+        ]
+    }
+]
