@@ -1,15 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var session = require('express-session');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var authRouter = require('./routes/auth');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
 
-var app = express();
+const app = express();
+
+// Configuración de sesión - Cambiar este secret en producción
+const SESSION_SECRET = 'gpx-secret-key-change-in-production';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Session configuration
 app.use(session({
-  secret: 'gpx-secret-key-change-in-production', // Cambiar en producción
+  secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
