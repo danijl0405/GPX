@@ -6,7 +6,7 @@
     "password": "password123",
     "balance": {
       "btc": 0.0001055,
-      "eur": 3524.26
+      "eur": 523.7600000000002
     },
     "assets": [
       {
@@ -18,6 +18,18 @@
         "symbol": "ETH",
         "name": "Ethereum",
         "amount": 1.5
+      }
+    ],
+    "withdrawHistory": [
+      {
+        "id": "1767618173193",
+        "type": "withdraw",
+        "currency": "eur",
+        "amount": 3000,
+        "fee": 0.5,
+        "destination": "24412412",
+        "status": "completed",
+        "createdAt": "2026-01-05T13:02:53.193Z"
       }
     ]
   },
