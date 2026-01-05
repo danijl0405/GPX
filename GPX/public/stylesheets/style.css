@@ -191,30 +191,37 @@ nav a:hover::after {
 .btn-register {
   padding: 10px 20px;
   font-size: 14px;
-  border: none;
-  background: #e0e0e0;
-  color: #000;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
   font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
 }
 
 .btn-register:hover {
-  background: #d0d0d0;
+  background: rgba(255, 153, 0, 0.1);
+  border-color: var(--primary-hover);
+  color: var(--primary-hover);
   transform: translateY(-1px);
 }
 
 .btn-login {
   padding: 10px 20px;
   font-size: 14px;
-  background: white;
-  color: #000000;
-  border: 1px solid #333;
+  background: var(--primary-color);
+  color: #000;
+  border: 1px solid var(--primary-color);
   font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
 }
 
 .btn-login:hover {
-  background: #1a1a1a;
-  border-color: #555;
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
 }
 
 .btn-logout {
@@ -264,6 +271,16 @@ footer {
   font-size: 16px;
 }
 
+.footer-col .logo {
+  margin-bottom: 20px;
+}
+
+.footer-col .logo img {
+  height: 160px;
+  width: auto;
+  display: block;
+}
+
 .footer-col ul li {
   margin-bottom: 12px;
 }
@@ -284,12 +301,24 @@ footer {
   margin-top: 24px;
 }
 
-.social-icons a {
-  font-size: 22px;
-  transition: transform 0.2s;
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  border-radius: 8px;
 }
 
-.social-icons a:hover {
-  transform: scale(1.1);
+.social-icon:hover {
+  transform: translateY(-2px);
   color: var(--primary-color);
+  background: rgba(255, 153, 0, 0.1);
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
 }

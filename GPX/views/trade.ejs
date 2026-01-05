@@ -48,7 +48,7 @@
                 <!-- Coin header -->
                 <div class="coin-header">
                     <div class="coin-title">
-                        <span class="coin-icon-large" data-color="<%= coin.icon_color %>"></span>
+                        <%- include('partials/coin-icon', { symbol: coin.symbol }) %>
                         <div>
                             <h1>
                                 <%= coin.symbol %>/USDT
@@ -250,12 +250,6 @@
 
         </div>
 
-        <script>
-            // Apply coin icon color via CSS variable
-            document.querySelectorAll('.coin-icon-large[data-color]').forEach(icon => {
-                const color = icon.getAttribute('data-color');
-                icon.style.setProperty('background', color);
-            });
 
             // Trading form tabs
             document.querySelectorAll('.trading-tab').forEach(tab => {

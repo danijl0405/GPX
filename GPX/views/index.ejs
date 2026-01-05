@@ -47,7 +47,7 @@
                 <tr>
                   <td>
                     <div class="coin-info">
-                      <span class="coin-icon" data-color="<%= coin.icon_color || '#333' %>"></span>
+                      <%- include('partials/coin-icon', { symbol: coin.symbol }) %>
                       <%= coin.name %>
                     </div>
                   </td>
@@ -85,12 +85,6 @@
 
     <%- include('partials/footer') %>
 
-      <script>
-        // Apply dynamic colors to coin icons
-        document.querySelectorAll('.coin-icon[data-color]').forEach(icon => {
-          icon.style.background = icon.getAttribute('data-color');
-        });
-      </script>
 
 </body>
 

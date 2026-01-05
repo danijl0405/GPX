@@ -42,8 +42,7 @@
                                 <tr class="clickable-row" data-href="/trade/<%= coin.symbol %>">
                                     <td>
                                         <div class="coin-info">
-                                            <span class="coin-icon"
-                                                data-color="<%= coin.icon_color || '#333' %>"></span>
+                                            <%- include('partials/coin-icon', { symbol: coin.symbol }) %>
                                             <%= coin.name %>
                                         </div>
                                     </td>
@@ -83,7 +82,7 @@
                                 <a href="<%= locals.user ? '/trade/' + coin.symbol : '/login' %>"
                                     class="stat-row clickable-stat">
                                     <div class="coin-info">
-                                        <span class="coin-icon" data-color="<%= coin.icon_color || '#333' %>"></span>
+                                        <%- include('partials/coin-icon', { symbol: coin.symbol }) %>
                                         <%= coin.name %>
                                     </div>
                                     <div class="text-green">+<%= coin.change_24h %> %</div>
@@ -102,7 +101,7 @@
                                 <a href="<%= locals.user ? '/trade/' + coin.symbol : '/login' %>"
                                     class="stat-row clickable-stat">
                                     <div class="coin-info">
-                                        <span class="coin-icon" data-color="<%= coin.icon_color || '#333' %>"></span>
+                                        <%- include('partials/coin-icon', { symbol: coin.symbol }) %>
                                         <%= coin.name %>
                                     </div>
                                     <div class="text-red">
@@ -121,10 +120,6 @@
         <%- include('partials/footer') %>
 
             <script>
-                // Apply dynamic colors to coin icons
-                document.querySelectorAll('.coin-icon[data-color]').forEach(icon => {
-                    icon.style.background = icon.getAttribute('data-color');
-                });
 
                 // Make table rows clickable
                 document.querySelectorAll('.clickable-row').forEach(row => {

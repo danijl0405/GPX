@@ -87,9 +87,15 @@ body {
 .coin-icon {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
-    background: #333;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coin-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
 .price-cell {
