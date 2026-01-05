@@ -180,10 +180,14 @@ body.support-page {
     cursor: pointer;
     transition: background 0.2s;
     min-height: 60px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .service-card:hover {
     background: #d0d0d0;
+    text-decoration: none;
+    color: inherit;
 }
 
 .service-icon {
@@ -272,11 +276,11 @@ body.support-page header {
     padding: 10px 0;
 }
 
-body.support-page header>.header-content {
+body.support-page header>.container {
     padding: 0 20px;
     max-width: 100%;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
