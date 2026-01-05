@@ -239,21 +239,6 @@ body.support-page {
     font-size: 14px;
 }
 
-.contact-banner .btn {
-    padding: 12px 30px;
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-block;
-    transition: opacity 0.2s;
-}
-
-.contact-banner .btn:hover {
-    opacity: 0.9;
-    background: #000 !important;
-    box-shadow: none;
-}
-
 /* Override dark theme for this page specifically as per images which show light theme for support */
 body.support-page {
     background-color: #fff;
@@ -262,27 +247,9 @@ body.support-page {
 }
 
 body.support-page header {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    /* Ensure header matches light theme */
-}
-
-body.support-page header {
-    padding: 10px 0;
-}
-
-body.support-page header>.container {
-    padding: 0 20px;
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
 }
 
 body.support-page header a {
@@ -291,6 +258,30 @@ body.support-page header a {
 
 body.support-page header .logo span {
     color: var(--primary-color);
+}
+
+/* Custom button colors for support page (User Request) */
+body.support-page header .btn-register {
+    background-color: #f0f0f0 !important;
+    color: #555 !important;
+    border: 1px solid #e0e0e0 !important;
+}
+
+body.support-page header .btn-register:hover {
+    background-color: #e0e0e0 !important;
+    color: #333 !important;
+    border-color: #ccc !important;
+}
+
+body.support-page header .btn-login {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 1px solid #000 !important;
+}
+
+body.support-page header .btn-login:hover {
+    background-color: #333 !important;
+    border-color: #333 !important;
 }
 
 body.support-page footer {

@@ -12,14 +12,12 @@
 </head>
 
 <body>
-  <!-- Video Background -->
   <video autoplay muted loop playsinline class="background-video">
     <source src="/images/FondoPagina.mp4" type="video/mp4">
   </video>
 
   <%- include('partials/header') %>
 
-    <!-- Hero Section -->
     <section class="hero-section">
       <div class="container">
         <h1 class="hero-title">
@@ -29,7 +27,56 @@
       </div>
     </section>
 
-    <!-- Crypto Table Section -->
+    <section class="ai-section" style="position: relative; z-index: 999; margin: 30px 0;">
+      <div class="container">
+        <div style="
+          background: rgba(15, 23, 42, 0.85); 
+          backdrop-filter: blur(8px);
+          border: 1px solid #38bdf8; 
+          border-radius: 16px; 
+          padding: 30px; 
+          text-align: center; 
+          max-width: 800px; 
+          margin: 0 auto;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);">
+
+          <h2 style="color: #fff; margin-bottom: 10px; font-size: 1.8rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+            🤖 Galpe AI Analyst
+          </h2>
+          <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 1.1rem;">
+            Deja que nuestra Inteligencia Artificial analice el mercado en tiempo real por ti.
+          </p>
+
+          <button onclick="consultarIA()" id="btn-ia" style="
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            color: white; 
+            border: none; 
+            padding: 12px 30px; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+            transition: transform 0.2s;">
+            ⚡ Analizar Mercado Ahora
+          </button>
+
+          <div id="resultado-ia" style="
+            display: none; 
+            margin-top: 25px; 
+            text-align: left; 
+            background: rgba(0,0,0,0.4); 
+            padding: 20px; 
+            border-radius: 10px; 
+            border-left: 4px solid #38bdf8; 
+            color: #e2e8f0; 
+            line-height: 1.6;
+            font-size: 1.05rem;">
+          </div>
+
+        </div>
+      </div>
+    </section>
     <section class="crypto-table-section">
       <div class="container">
         <table class="crypto-table">
@@ -48,7 +95,7 @@
                   <td>
                     <div class="coin-info">
                       <%- include('partials/coin-icon', { symbol: coin.symbol }) %>
-                      <%= coin.name %>
+                        <%= coin.name %>
                     </div>
                   </td>
                   <td class="price-cell">
@@ -72,7 +119,6 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
       <div class="container">
         <h2 class="cta-title">
@@ -85,6 +131,45 @@
 
     <%- include('partials/footer') %>
 
+      <script>
+        // Apply dynamic colors to coin icons
+        document.querySelectorAll('.coin-icon[data-color]').forEach(icon => {
+          icon.style.background = icon.getAttribute('data-color');
+        });
+
+        // Lógica para conectar con la IA
+        async function consultarIA() {
+          const btn = document.getElementById('btn-ia');
+          const output = document.getElementById('resultado-ia');
+
+          // Estado de carga visual
+          btn.disabled = true;
+          btn.innerHTML = "📡 Analizando datos...";
+          btn.style.opacity = "0.7";
+          output.style.display = "block";
+          output.innerHTML = "<i>Conectando con los servidores de noticias globales...</i>";
+
+          try {
+            // Petición al backend
+            const response = await fetch('/api/ai-analysis');
+            const data = await response.json();
+
+            if (data.success) {
+              // Mostrar resultado
+              output.innerHTML = "<strong>📊 INFORME GALPE:</strong><br><br>" + data.analysis;
+            } else {
+              output.innerHTML = "❌ Error: " + data.error;
+            }
+          } catch (error) {
+            output.innerHTML = "❌ Error de conexión. Inténtalo de nuevo.";
+          } finally {
+            // Restaurar botón
+            btn.disabled = false;
+            btn.innerHTML = "⚡ Analizar Mercado Ahora";
+            btn.style.opacity = "1";
+          }
+        }
+      </script>
 
 </body>
 
