@@ -90,7 +90,7 @@ body.support-page {
     max-width: 100%;
 }
 
-.support-content > .container {
+.support-content>.container {
     max-width: 100%;
     padding: 0 60px;
 }
@@ -267,7 +267,7 @@ body.support-page header {
     padding: 10px 0;
 }
 
-body.support-page header > .container {
+body.support-page header>.container {
     padding: 0 20px;
     max-width: 100%;
     display: flex;
@@ -305,7 +305,7 @@ body.support-page .footer-col a {
     padding: 80px 0;
 }
 
-.contact-form-container > .container {
+.contact-form-container>.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 100px;

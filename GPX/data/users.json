@@ -27,8 +27,8 @@
     "email": "danijl0405@gmail.com",
     "password": "123445",
     "balance": {
-      "btc": 0,
-      "eur": 0
+      "btc": 150,
+      "eur": 90
     },
     "assets": []
   }
