@@ -20,6 +20,16 @@ router.get('/support', function (req, res, next) {
   res.render('support', { title: 'Soporte - Galpe Exchange' });
 });
 
+router.get('/contact', function (req, res, next) {
+  res.render('contact', { title: 'Soporte técnico - Galpe Exchange' });
+});
+
+router.post('/support/contact', function (req, res, next) {
+  // Aquí puedes agregar la lógica para procesar el formulario
+  // Por ahora, solo redirigimos de vuelta con un mensaje
+  res.redirect('/contact?sent=true');
+});
+
 // Rutas protegidas - requieren autenticación
 router.get('/dashboard', requireAuth, function (req, res, next) {
   try {
@@ -74,7 +84,7 @@ router.get('/trade/:symbol', requireAuth, function (req, res, next) {
     }
 
     res.render('trade', {
-      title: `${coin.name} - Trading`,
+      title: coin.name + ' - Trading',
       coin: coin,
       coins: coins, // Para el sidebar de pares
       user: req.session.user
@@ -104,6 +114,7 @@ router.get('/register', function (req, res, next) {
   }
   res.render('register', { title: 'Registrarse - Galpe Exchange' });
 });
+
 
 router.get('/retire', requireAuth, function (req, res, next) {
   const user = req.session.user; // Usuario de la sesión
