@@ -104,6 +104,10 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   gap: 40px;
   /* Añadido para separar secciones */
+  position: relative;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -125,7 +129,9 @@ header {
 }
 
 .logo img {
-  height: 32px;
+  height: 66px;
+  width: auto;
+  display: block;
 }
 
 nav {
@@ -199,8 +205,8 @@ nav a:hover::after {
 .btn-login {
   padding: 10px 20px;
   font-size: 14px;
-  background: #000;
-  color: #fff;
+  background: white;
+  color: #000000;
   border: 1px solid #333;
   font-weight: 600;
 }
@@ -237,10 +243,13 @@ nav a:hover::after {
 
 /* Footer */
 footer {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   padding: 60px 0;
   margin-top: auto;
-  border-top: 1px solid #222;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 10;
 }
 
 .footer-grid {
