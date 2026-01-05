@@ -97,17 +97,21 @@ ul {
 
 /* Header */
 header {
-  padding: 24px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 24px 120px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  gap: 40px;
-  /* Añadido para separar secciones */
   position: relative;
   z-index: 10;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
+  width: 100%;
+}
+
+.header-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 .logo {
@@ -117,8 +121,7 @@ header {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
-  /* Evita que se comprima */
+  justify-self: start;
 }
 
 .logo-text {
@@ -135,11 +138,9 @@ header {
 }
 
 nav {
-  flex: 1;
-  /* Toma el espacio disponible */
+  justify-self: center;
   display: flex;
   justify-content: center;
-  /* Centra la navegación */
 }
 
 nav ul {
@@ -185,6 +186,9 @@ nav a:hover::after {
   align-items: center;
   flex-shrink: 0;
   /* Evita que se comprima */
+  justify-self: end;
+  justify-content: flex-end;
+  min-width: 200px;
 }
 
 /* Botones específicos del header */

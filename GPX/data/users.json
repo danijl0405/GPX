@@ -28,8 +28,30 @@
     "password": "123445",
     "balance": {
       "btc": 150,
-      "eur": 90
+      "eur": 9
     },
-    "assets": []
+    "assets": [],
+    "withdrawHistory": [
+      {
+        "id": "1767617018548",
+        "type": "withdraw",
+        "currency": "eur",
+        "amount": 30,
+        "fee": 0.5,
+        "destination": "5115615616515616156615615615",
+        "status": "completed",
+        "createdAt": "2026-01-05T12:43:38.548Z"
+      },
+      {
+        "id": "1767616989213",
+        "type": "withdraw",
+        "currency": "eur",
+        "amount": 50,
+        "fee": 0.5,
+        "destination": "5115615616515616156615615615",
+        "status": "completed",
+        "createdAt": "2026-01-05T12:43:09.213Z"
+      }
+    ]
   }
 ]

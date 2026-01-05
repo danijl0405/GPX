@@ -182,12 +182,138 @@ router.get('/register', function (req, res, next) {
 });
 
 
-router.get('/retire', requireAuth, function (req, res, next) {
-  const user = req.session.user; // Usuario de la sesión
-  res.render('retire', {
+//   WITHDRAW (GET)
+router.get('/withdraw', requireAuth, (req, res) => {
+  res.render('withdraw', {
     title: 'Retirar - Galpe Exchange',
-    user: user // Opcional, si quieres mostrar balance u otra info
+    user: req.session.user,
+    error: null,
+    success: null,
+    history: req.session.user.withdrawHistory || []
   });
+});
+
+//   WITHDRAW (POST) - SIMULADO
+router.post('/withdraw', requireAuth, (req, res, next) => {
+  try {
+    const { amount, currency, destination } = req.body;
+
+    const curr = (currency || 'eur').toLowerCase();
+    const parsedAmount = Number.parseFloat(String(amount).replace(',', '.'));
+    const dest = (destination || '').trim();
+
+    // Validaciones básicas
+    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
+      return res.render('withdraw', {
+        title: 'Retirar - Galpe Exchange',
+        user: req.session.user,
+        error: 'Introduce una cantidad válida.',
+        success: null,
+        history: req.session.user.withdrawHistory || []
+      });
+    }
+
+    if (!['eur', 'btc'].includes(curr)) {
+      return res.render('withdraw', {
+        title: 'Retirar - Galpe Exchange',
+        user: req.session.user,
+        error: 'Moneda no soportada.',
+        success: null,
+        history: req.session.user.withdrawHistory || []
+      });
+    }
+
+    // Para que parezca real: pedir un "destino" (IBAN / wallet), pero sin validarlo a nivel banco
+    if (dest.length < 6) {
+      return res.render('withdraw', {
+        title: 'Retirar - Galpe Exchange',
+        user: req.session.user,
+        error: 'Introduce un destino válido (IBAN o wallet).',
+        success: null,
+        history: req.session.user.withdrawHistory || []
+      });
+    }
+
+    const users = dataProvider.getUsers();
+    const idx = users.findIndex(u => u.id === req.session.user.id);
+
+    if (idx === -1) return res.redirect('/auth/logout');
+
+    // Balance y fondos suficientes
+    users[idx].balance = users[idx].balance || { eur: 0, btc: 0 };
+    const current = Number(users[idx].balance[curr]) || 0;
+
+    if (parsedAmount > current) {
+      return res.render('withdraw', {
+        title: 'Retirar - Galpe Exchange',
+        user: req.session.user,
+        error: `Fondos insuficientes. Tienes ${curr === 'btc' ? current : current.toFixed(2)} ${curr.toUpperCase()}.`,
+        success: null,
+        history: req.session.user.withdrawHistory || []
+      });
+    }
+
+    // (Opcional) “fee” simulada para que parezca exchange
+    const fee = curr === 'btc' ? 0.0001 : 0.50; // simple
+    const totalDebit = parsedAmount + fee;
+
+    if (totalDebit > current) {
+      return res.render('withdraw', {
+        title: 'Retirar - Galpe Exchange',
+        user: req.session.user,
+        error: `Saldo insuficiente para cubrir comisión. Comisión: ${fee} ${curr.toUpperCase()}.`,
+        success: null,
+        history: req.session.user.withdrawHistory || []
+      });
+    }
+
+    // Restar saldo
+    users[idx].balance[curr] = current - totalDebit;
+
+    // Historial
+    users[idx].withdrawHistory = Array.isArray(users[idx].withdrawHistory)
+      ? users[idx].withdrawHistory
+      : [];
+
+    users[idx].withdrawHistory.unshift({
+      id: Date.now().toString(),
+      type: 'withdraw',
+      currency: curr,
+      amount: parsedAmount,
+      fee,
+      destination: dest,
+      status: 'completed', // simulado
+      createdAt: new Date().toISOString()
+    });
+
+    users[idx].withdrawHistory = users[idx].withdrawHistory.slice(0, 50);
+
+    // Guardar
+    const ok = dataProvider.saveUsers(users);
+    if (!ok) {
+      return res.render('withdraw', {
+        title: 'Retirar - Galpe Exchange',
+        user: req.session.user,
+        error: 'Error al guardar el retiro.',
+        success: null,
+        history: req.session.user.withdrawHistory || []
+      });
+    }
+
+    // Actualizar sesión
+    const { password, ...userWithoutPassword } = users[idx];
+    req.session.user = userWithoutPassword;
+
+    return res.render('withdraw', {
+      title: 'Retirar - Galpe Exchange',
+      user: req.session.user,
+      error: null,
+      success: `Retiro simulado: -${parsedAmount} ${curr.toUpperCase()} (comisión ${fee} ${curr.toUpperCase()}).`,
+      history: req.session.user.withdrawHistory || []
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;
