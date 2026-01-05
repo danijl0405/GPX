@@ -105,4 +105,12 @@ router.get('/register', function (req, res, next) {
   res.render('register', { title: 'Registrarse - Galpe Exchange' });
 });
 
+router.get('/retire', requireAuth, function (req, res, next) {
+  const user = req.session.user; // Usuario de la sesión
+  res.render('retire', { 
+    title: 'Retirar - Galpe Exchange',
+    user: user // Opcional, si quieres mostrar balance u otra info
+  });
+});
+
 module.exports = router;
